@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-width=1.0">
+    <title>Michele Cillo | Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #1a1a1a;
+            --accent-color: #0A66C2;
+            --card-bg: #f3f4f6;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --accent-color: #38bdf8;
+            --card-bg: #1e293b;
+            --nav-bg: rgba(15, 23, 42, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 0;
+        }
+
+        /* Hero Section with Image */
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-text-area { flex: 1; }
+        
+        h1 { font-size: 4rem; margin-bottom: 1rem; line-height: 1.1; }
+        .subtitle { font-size: 1.5rem; color: var(--accent-color); margin-bottom: 2rem; }
+        .hero-text { font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem; }
+        
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.8rem;
+            margin-right: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+        .social-links a:hover { color: var(--accent-color); transform: translateY(-3px); }
+
+        /* Profile Image */
+        .hero-image-area {
+            flex-shrink: 0;
+        }
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Titles */
+        h2 { font-size: 2.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 0.5rem;}
+
+        /* Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { margin-bottom: 1rem; color: var(--accent-color); }
+        .card a { color: var(--text-color); text-decoration: none; font-weight: bold; }
+        .card a:hover { text-decoration: underline; }
+
+        /* Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+        .tag {
+            background: var(--accent-color);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* Animations */
+        .hidden-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .show-element {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                margin-top: 2rem;
+            }
+            .hero-text { margin: 0 auto 2rem auto; }
+            h1 { font-size: 2.5rem; }
+            section { min-height: auto; padding: 4rem 0; }
+            .profile-img { width: 220px; height: 220px; margin-bottom: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">MC.</div>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hidden-element">
+            <div class="hero-content">
+                <div class="hero-text-area">
+                    <h1>Hi, I'm Michele 👋</h1>
+                    <div class="subtitle">M.Sc. Computer Science Student @ UniSa</div>
+                    <p class="hero-text">
+                        Specializing in Software Engineering & IT Management. Former Academic Tutor for Theory of Computation. Passionate about automated tooling, quantum computing, sustainable software, and space exploration.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/michele-cillo14" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/MikeCillo" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:tua-email-vera@example.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image-area">
+                    <!-- QUI C'È LA TUA FOTO -->
+                    <img src="foto.jpg" alt="Michele Cillo" class="profile-img">
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education -->
+        <section id="background" class="hidden-element">
+            <h2>Background</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>🎓 Education</h3>
+                    <p><b>M.Sc. in Computer Science</b> (2nd Year)</p>
+                    <p><i>Software Engineering & IT Management</i></p>
+                    <p>University of Salerno</p>
+                    <br>
+                    <p><b>B.Sc. in Computer Science</b></p>
+                    <p>University of Salerno</p>
+                </div>
+                <div class="card">
+                    <h3>👨‍🏫 Experience</h3>
+                    <p><b>Academic Tutor / Teaching Assistant</b></p>
+                    <p><i>Elements of Theory of Computation</i></p>
+                    <p>University of Salerno</p>
+                    <br>
+                    <p>Mentored students on formal languages, automata (DFA/NFA), and Turing machines.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="hidden-element">
+            <h2>Featured Projects</h2>
+            <div class="grid">
+                
+                <div class="card">
+                    <h3>🎵 Music Score Assistant</h3>
+                    <p>An IoT multi-sensory assistive system built for my B.Sc. Thesis at Musimathics Lab. Helps visually impaired musicians "read" scores via synchronized tactile vibration and auditory cues using an ESP32.</p>
+                    <div class="tags">
+                        <span class="tag">C++ / FreeRTOS</span>
+                        <span class="tag">WebBluetooth</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Docker</span>
+                    </div>
+                    <br>
+                    <a href="https://github.com/MikeCillo/MusicScoreAssistant" target="_blank"><i class="fab fa-github"></i> View Repository ➔</a>
+                </div>
+
+                <div class="card">
+                    <h3>🔧 junit-to-jmh</h3>
+                    <p>Open source contribution. A tool for automatically converting JUnit 4 and JUnit 5 test suites into JMH (Java Microbenchmark Harness) microbenchmarks. Features AST inlining and fail-fast validation.</p>
+                    <div class="tags">
+                        <span class="tag">Java 17</span>
+                        <span class="tag">JMH</span>
+                        <span class="tag">JUnit 5</span>
+                        <span class="tag">Gradle</span>
+                    </div>
+                    <br>
+                    <a href="https://github.com/alniniclas/junit-to-jmh" target="_blank"><i class="fab fa-github"></i> View Repository ➔</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="hidden-element">
+            <h2>Tech Stack & Interests</h2>
+            <div class="card">
+                <p><b>Languages:</b> Java, Python, C/C++, JavaScript, SQL</p>
+                <br>
+                <p><b>DevOps & Infrastructure:</b> Docker, Kubernetes, Git, CI/CD pipelines</p>
+                <br>
+                <p><b>Quality & Tools:</b> JMH, JUnit, SonarQube, Agile/Scrum, Jira, Trello</p>
+                <br>
+                <p><b>Core Interests:</b> Quantum Computing, Sustainable/Green IT, Space/Aerospace Systems, Assistive Tech</p>
+            </div>
+        </section>
+        
+        <br><br><br>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcon(newTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        // Scroll Animations
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-element');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hidden-element').forEach((el) => { observer.observe(el); });
+    </script>
+</body>
+</html>
