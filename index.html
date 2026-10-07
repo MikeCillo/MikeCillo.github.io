@@ -13,29 +13,29 @@
     
     <style>
         :root {
-            /* Light Theme */
-            --bg-color: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --accent-color: #2563eb;
-            --accent-hover: #1d4ed8;
+            /* Light Theme - Sleek Monochrome */
+            --bg-color: #fafafa;
+            --text-main: #111111;
+            --text-muted: #666666;
+            --accent-color: #000000;
             --card-bg: #ffffff;
-            --card-border: rgba(15, 23, 42, 0.05);
-            --nav-bg: rgba(255, 255, 255, 0.8);
-            --glow-color: rgba(37, 99, 235, 0.15);
+            --card-border: rgba(0, 0, 0, 0.1);
+            --nav-bg: rgba(250, 250, 250, 0.85);
+            --glow-color: rgba(0, 0, 0, 0.04);
+            --btn-text: #ffffff;
         }
 
         [data-theme="dark"] {
-            /* Dark/Midnight Theme */
-            --bg-color: #0b1121;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-color: #38bdf8;
-            --accent-hover: #0ea5e9;
-            --card-bg: #1e293b;
-            --card-border: rgba(255, 255, 255, 0.05);
-            --nav-bg: rgba(11, 17, 33, 0.8);
-            --glow-color: rgba(56, 189, 248, 0.15);
+            /* Dark Theme - Midnight Black */
+            --bg-color: #0a0a0a;
+            --text-main: #f5f5f5;
+            --text-muted: #a3a3a3;
+            --accent-color: #ffffff;
+            --card-bg: #141414;
+            --card-border: rgba(255, 255, 255, 0.1);
+            --nav-bg: rgba(10, 10, 10, 0.85);
+            --glow-color: rgba(255, 255, 255, 0.03);
+            --btn-text: #000000;
         }
 
         * {
@@ -54,7 +54,7 @@
             position: relative;
         }
 
-        /* Ambient Glow Background Effect */
+        /* Subtle Ambient Glow */
         body::before {
             content: '';
             position: absolute;
@@ -84,22 +84,21 @@
             z-index: 1000;
         }
 
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px;}
-        .logo span { color: var(--accent-color); }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px;}
 
         .theme-toggle {
             background: none;
             border: none;
             color: var(--text-main);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: transform 0.2s;
         }
-        .theme-toggle:hover { transform: scale(1.1) rotate(10deg); color: var(--accent-color); }
+        .theme-toggle:hover { transform: scale(1.1) rotate(10deg); }
 
         /* Container */
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -122,89 +121,117 @@
 
         .hero-text-area { flex: 1; }
         
-        h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.1; letter-spacing: -1px; }
-        .subtitle { font-size: 1.3rem; font-weight: 600; color: var(--accent-color); margin-bottom: 1.5rem; }
-        .hero-text { font-size: 1.15rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2.5rem; }
+        h1 { font-size: 3.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.1; letter-spacing: -1.5px; }
+        .subtitle { font-size: 1.3rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1.5rem; }
+        
+        .hero-text { 
+            font-size: 1.1rem; 
+            color: var(--text-muted); 
+            max-width: 600px; 
+            margin-bottom: 2.5rem; 
+        }
+        .hero-text b { color: var(--text-main); }
         
         .social-links a {
             color: var(--text-main);
-            font-size: 1.5rem;
-            margin-right: 1.2rem;
+            font-size: 1.4rem;
+            margin-right: 1rem;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
         .social-links a:hover { 
-            color: #fff; 
+            color: var(--btn-text); 
             background: var(--accent-color); 
             border-color: var(--accent-color);
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 10px 20px var(--glow-color);
         }
 
         /* Profile Image */
         .hero-image-area { flex-shrink: 0; }
         .profile-img {
-            width: 320px;
-            height: 320px;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--card-bg);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 40px var(--glow-color);
             transition: transform 0.5s ease;
+            filter: grayscale(20%); /* Adds a subtle professional desaturation */
         }
-        .profile-img:hover { transform: scale(1.03); }
+        .profile-img:hover { transform: scale(1.03); filter: grayscale(0%); }
 
         /* Titles */
         h2 { 
-            font-size: 2.5rem; 
+            font-size: 2.2rem; 
             font-weight: 800;
-            margin-bottom: 3rem; 
+            margin-bottom: 2.5rem; 
             letter-spacing: -0.5px;
         }
-        h2 span { color: var(--accent-color); }
 
-        /* Cards Grid */
+        /* Base Cards (for Background & Skills) */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
         }
-
         .card {
             background: var(--card-bg);
             padding: 2.5rem;
-            border-radius: 16px;
+            border-radius: 12px;
             border: 1px solid var(--card-border);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
             transition: all 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+        .card h3 { font-size: 1.3rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 700; }
+        .card p { color: var(--text-muted); font-size: 1rem; margin-bottom: 0.5rem; }
+
+        /* Horizontal Project Cards */
+        .projects-list {
             display: flex;
             flex-direction: column;
-        }
-        .card:hover { 
-            transform: translateY(-8px); 
-            border-color: var(--accent-color);
-            box-shadow: 0 15px 30px var(--glow-color);
+            gap: 1.5rem;
         }
         
-        .card h3 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--text-main); font-weight: 700; }
-        .card p { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; flex-grow: 1; }
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateX(10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px var(--glow-color);
+        }
+
+        .project-info { flex: 1; }
+        .project-info h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .project-info p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6;}
+        
+        .project-action { flex-shrink: 0; }
 
         /* Tags */
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .tag {
-            background: var(--glow-color);
-            color: var(--accent-color);
-            padding: 0.4rem 0.8rem;
-            border-radius: 8px;
-            font-size: 0.8rem;
+            background: var(--accent-color);
+            color: var(--btn-text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.5px;
         }
@@ -215,19 +242,18 @@
             align-items: center;
             gap: 0.5rem;
             background: var(--text-main);
-            color: var(--bg-color);
+            color: var(--btn-text) !important;
             padding: 0.8rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            align-self: flex-start;
+            white-space: nowrap;
         }
         .btn-link:hover {
-            background: var(--accent-color);
-            color: #fff;
-            transform: translateY(-2px);
+            opacity: 0.8;
+            transform: scale(1.05);
         }
 
         /* Animations */
@@ -252,15 +278,23 @@
             h1 { font-size: 3rem; }
             .social-links { justify-content: center; }
             section { min-height: auto; padding: 6rem 0 2rem 0; }
-            .profile-img { width: 250px; height: 250px; }
+            .profile-img { width: 220px; height: 220px; }
+            
+            .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .project-card:hover { transform: translateY(-5px); }
+            .btn-link { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Modern Glass Navbar -->
+    <!-- Modern Navbar -->
     <nav>
-        <div class="logo">Michele<span>.</span></div>
+        <div class="logo">Michele Cillo</div>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
             <i class="fas fa-moon"></i>
         </button>
@@ -273,19 +307,20 @@
             <div class="hero-content">
                 <div class="hero-text-area">
                     <h1>Hi, I'm Michele 👋</h1>
-                    <div class="subtitle">M.Sc. Computer Science Student @ UniSa</div>
+                    <div class="subtitle">Software Engineer & IT Management</div>
                     <p class="hero-text">
-                        Specializing in <b>Software Engineering & IT Management</b>. Former Academic Tutor for Theory of Computation. Passionate about automated tooling, quantum computing, sustainable architecture, and space exploration.
+                        Born and raised in Italy 🇮🇹. I hold a <b>B.Sc. in Computer Science</b> and I'm currently pursuing my <b>M.Sc. in Software Engineering</b> at the University of Salerno.
+                        <br><br>
+                        My focus spans automated tooling, sustainable software architecture, and quantum computing. When I'm not coding, you'll find me playing music 🎸, enjoying video games 🎮, or following the F1 🏎️ and MotoGP 🏍️ championships.
                     </p>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/michele-cillo14" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                         <a href="https://github.com/MikeCillo" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="mailto:mikecillo612@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                        <a href="mailto:m.cillo5@studenti.unisa.it" title="Email Uni"><i class="fas fa-envelope"></i></a>
+                        <a href="mailto:mikecillo612@gmail.com" title="Personal Email"><i class="fas fa-envelope"></i></a>
+                        <a href="mailto:m.cillo5@studenti.unisa.it" title="Institutional Email"><i class="fas fa-graduation-cap"></i></a>
                     </div>
                 </div>
                 <div class="hero-image-area">
-                    <!-- QUI C'È LA TUA FOTO -->
                     <img src="foto.jpg" alt="Michele Cillo" class="profile-img">
                 </div>
             </div>
@@ -293,19 +328,19 @@
 
         <!-- Experience & Education -->
         <section id="background" class="hidden-element">
-            <h2>My <span>Background</span></h2>
+            <h2>My Background</h2>
             <div class="grid">
                 <div class="card">
                     <h3>🎓 Education</h3>
-                    <p style="margin-bottom: 0;"><b>M.Sc. in Computer Science</b> (2nd Year)</p>
+                    <p style="margin-bottom: 0; color: var(--text-main);"><b>M.Sc. in Computer Science</b> (2nd Year)</p>
                     <p><i>Software Engineering & IT Management</i> <br>University of Salerno</p>
                     <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 1rem 0;">
-                    <p style="margin-bottom: 0;"><b>B.Sc. in Computer Science</b></p>
+                    <p style="margin-bottom: 0; color: var(--text-main);"><b>B.Sc. in Computer Science</b></p>
                     <p>University of Salerno</p>
                 </div>
                 <div class="card">
                     <h3>👨‍🏫 Experience</h3>
-                    <p style="margin-bottom: 0;"><b>Academic Tutor / Teaching Assistant</b></p>
+                    <p style="margin-bottom: 0; color: var(--text-main);"><b>Academic Tutor / Teaching Assistant</b></p>
                     <p><i>Elements of Theory of Computation</i> <br>University of Salerno</p>
                     <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 1rem 0;">
                     <p>Mentored undergraduate students on formal language theory, regular & context-free grammars, automata (DFA/NFA, PDA), and Turing machines.</p>
@@ -315,66 +350,82 @@
 
         <!-- Projects -->
         <section id="projects" class="hidden-element">
-            <h2>Featured <span>Projects</span></h2>
-            <div class="grid">
+            <h2>Featured Projects</h2>
+            <div class="projects-list">
                 
                 <!-- Project 1: Thesis -->
-                <div class="card">
-                    <h3>🎵 Music Score Assistant</h3>
-                    <p>An IoT assistive system (B.Sc. Thesis at Musimathics Lab) enabling visually impaired musicians to "read" scores via synchronized tactile haptic vibration and auditory cues using an ESP32 DAC.</p>
-                    <div class="tags">
-                        <span class="tag">C++ / FreeRTOS</span>
-                        <span class="tag">WebBluetooth</span>
-                        <span class="tag">AlphaTab.js</span>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>🎵 Music Score Assistant</h3>
+                        <p>An IoT assistive system (B.Sc. Thesis at Musimathics Lab) enabling visually impaired musicians to "read" scores via synchronized tactile haptic vibration and auditory cues using an ESP32 DAC.</p>
+                        <div class="tags">
+                            <span class="tag">C++ / FreeRTOS</span>
+                            <span class="tag">WebBluetooth</span>
+                            <span class="tag">AlphaTab.js</span>
+                            <span class="tag">Docker</span>
+                        </div>
                     </div>
-                    <a href="https://github.com/MikeCillo/MusicScoreAssistant" target="_blank" class="btn-link">
-                        <i class="fab fa-github"></i> View Repository
-                    </a>
+                    <div class="project-action">
+                        <a href="https://github.com/MikeCillo/MusicScoreAssistant" target="_blank" class="btn-link">
+                            <i class="fab fa-github"></i> View Repo
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Project 2: Compiler -->
-                <div class="card">
-                    <h3>🏛️ Csar Compiler</h3>
-                    <p>A complete, custom-built compiler (Frontend + Backend) developed in Python. It parses a custom Latin-keyword language and translates the AST into highly optimized LLVM IR for blazing-fast native executables.</p>
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">LLVM IR</span>
-                        <span class="tag">Compiler Design</span>
-                        <span class="tag">AST</span>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>🏛️ Csar Compiler</h3>
+                        <p>A custom-built compiler (Frontend + Backend) developed in Python. It parses a custom Latin-keyword language and translates the AST into highly optimized LLVM IR for native executables.</p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">LLVM IR</span>
+                            <span class="tag">AST</span>
+                        </div>
                     </div>
-                    <a href="https://github.com/MikeCillo/Csar" target="_blank" class="btn-link">
-                        <i class="fab fa-github"></i> View Repository
-                    </a>
+                    <div class="project-action">
+                        <a href="https://github.com/MikeCillo/Csar" target="_blank" class="btn-link">
+                            <i class="fab fa-github"></i> View Repo
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Project 3: Green Tech -->
-                <div class="card">
-                    <h3>🌱 RockMerce</h3>
-                    <p>Refactored a legacy Java B2C e-commerce into a sustainable "Green" ecosystem. Achieved a 90% drop in CO₂/visit, fixed 129 bugs, implemented OLED dark mode, and added WAI-ARIA accessibility.</p>
-                    <div class="tags">
-                        <span class="tag">Java/JSP</span>
-                        <span class="tag">SonarQube</span>
-                        <span class="tag">Green IT</span>
-                        <span class="tag">JMeter</span>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>🌱 RockMerce</h3>
+                        <p>Refactored a legacy Java B2C e-commerce into a sustainable "Green" ecosystem. Achieved a 90% drop in CO₂/visit, fixed 129 bugs, implemented OLED dark mode, and WAI-ARIA accessibility.</p>
+                        <div class="tags">
+                            <span class="tag">Java/JSP</span>
+                            <span class="tag">SonarQube</span>
+                            <span class="tag">Green IT</span>
+                            <span class="tag">JMeter</span>
+                        </div>
                     </div>
-                    <a href="https://github.com/MikeCillo/RockMerce" target="_blank" class="btn-link">
-                        <i class="fab fa-github"></i> View Repository
-                    </a>
+                    <div class="project-action">
+                        <a href="https://github.com/MikeCillo/RockMerce" target="_blank" class="btn-link">
+                            <i class="fab fa-github"></i> View Repo
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Project 4: Open Source -->
-                <div class="card">
-                    <h3>🔧 junit-to-jmh</h3>
-                    <p>Open source contribution. An automated tool bridging functional testing and performance benchmarking by extracting JUnit 4/5 test suites and wrapping them into robust JMH microbenchmarks.</p>
-                    <div class="tags">
-                        <span class="tag">Java 17</span>
-                        <span class="tag">JMH</span>
-                        <span class="tag">JUnit 5</span>
-                        <span class="tag">Gradle</span>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3>🔧 junit-to-jmh</h3>
+                        <p>Open source contribution. An automated tool bridging functional testing and performance benchmarking by extracting JUnit 4/5 test suites and wrapping them into robust JMH microbenchmarks.</p>
+                        <div class="tags">
+                            <span class="tag">Java 17</span>
+                            <span class="tag">JMH</span>
+                            <span class="tag">JUnit 5</span>
+                            <span class="tag">Gradle</span>
+                        </div>
                     </div>
-                    <a href="https://github.com/alniniclas/junit-to-jmh" target="_blank" class="btn-link">
-                        <i class="fab fa-github"></i> View Repository
-                    </a>
+                    <div class="project-action">
+                        <a href="https://github.com/alniniclas/junit-to-jmh" target="_blank" class="btn-link">
+                            <i class="fab fa-github"></i> View Repo
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -382,15 +433,13 @@
 
         <!-- Skills -->
         <section id="skills" class="hidden-element">
-            <h2>Tech Stack & <span>Interests</span></h2>
-            <div class="card" style="padding: 3rem;">
+            <h2>Tech Stack & Interests</h2>
+            <div class="card">
                 <p><b>Languages:</b> Java, Python, C/C++, JavaScript, SQL</p>
                 <p><b>Embedded & IoT:</b> ESP32, FreeRTOS, Arduino, WebBluetooth (BLE), DAC</p>
                 <p><b>DevOps & Infrastructure:</b> Docker, Kubernetes, Git, CI/CD pipelines</p>
                 <p><b>Quality & Benchmarking:</b> JMH, JUnit 4/5, SonarQube, Gradle, Maven</p>
                 <p><b>Management:</b> Agile/Scrum, Kanban, Jira, Trello, Slack</p>
-                <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 2rem 0;">
-                <p><b>Core Interests:</b> Quantum Computing, Sustainable/Green IT, Space/Aerospace Systems, Assistive Tech</p>
             </div>
         </section>
         
